@@ -1,6 +1,8 @@
 import asyncio
+
 from src.backend.bd.conexao import engine
 from src.backend.bd.base import Base
+# noqa: F401 - Imports necessários para criar as tabelas via Base.metadata
 from src.backend.modelos import UsuarioBD, PostoBD, ProcessoBD, EtapaBD
 
 
