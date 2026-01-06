@@ -1,0 +1,97 @@
+{
+  ".github": {
+    "workflows": {
+      "tests.yml": "arquivo"
+    }
+  },
+  ".gitignore": "arquivo",
+  "alembic": {
+    "env.py": "arquivo",
+    "README": "arquivo",
+    "script.py.mako": "arquivo",
+    "versions": {
+      "1afe650edfa5_criar_tabelas_iniciais.py": "arquivo"
+    }
+  },
+  "alembic.ini": "arquivo",
+  "CONFIGURACAO_ATUAL.md": "arquivo",
+  "docker-compose.yml": "arquivo",
+  "dockerpwd": {},
+  "docs": {
+    "API.md": "arquivo"
+  },
+  "ESTRUTURA_REPOSITORIO.json": "arquivo",
+  "ESTRUTURA_REPOSITORIO.txt": "arquivo",
+  "gerar_arvore.py": "arquivo",
+  "gerar_snapshot.py": "arquivo",
+  "pytest.ini": "arquivo",
+  "requirements.txt": "arquivo",
+  "run.py": "arquivo",
+  "SNAPSHOT_REPOSITORIO.json": "arquivo",
+  "src": {
+    "backend": {
+      "api": {
+        "dependencias": {},
+        "dependencias.py": "arquivo",
+        "rotas": {
+          "autenticacao.py": "arquivo",
+          "etapas.py": "arquivo",
+          "postos.py": "arquivo",
+          "processos.py": "arquivo",
+          "__init__.py": "arquivo"
+        },
+        "__init__.py": "arquivo"
+      },
+      "bd": {
+        "base.py": "arquivo",
+        "conexao.py": "arquivo",
+        "inicializar.py": "arquivo",
+        "__init__.py": "arquivo"
+      },
+      "esquemas": {
+        "autenticacao.py": "arquivo",
+        "etapa.py": "arquivo",
+        "posto.py": "arquivo",
+        "processo.py": "arquivo",
+        "usuario.py": "arquivo",
+        "__init__.py": "arquivo"
+      },
+      "modelos": {
+        "etapa.py": "arquivo",
+        "posto.py": "arquivo",
+        "processo.py": "arquivo",
+        "usuario.py": "arquivo",
+        "__init__.py": "arquivo"
+      },
+      "nucleo": {
+        "configuracao.py": "arquivo",
+        "logging.py": "arquivo",
+        "seguranca.py": "arquivo",
+        "validadores.py": "arquivo",
+        "__init__.py": "arquivo"
+      },
+      "principal.py": "arquivo",
+      "servicos": {},
+      "tarefas": {},
+      "__init__.py": "arquivo"
+    },
+    "compartilhado": {
+      "constantes": {},
+      "enums": {},
+      "utilitarios": {}
+    },
+    "frontend": {
+      "componentes": {},
+      "paginas": {},
+      "servicos": {}
+    },
+    "__init__.py": "arquivo"
+  },
+  "tests": {
+    "conftest.py": "arquivo",
+    "test_autenticacao.py": "arquivo",
+    "test_postos.py": "arquivo",
+    "test_processos.py": "arquivo",
+    "__init__.py": "arquivo"
+  }
+}
