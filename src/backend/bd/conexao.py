@@ -1,5 +1,4 @@
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, async_sessionmaker
-from sqlalchemy.orm import sessionmaker
 from src.backend.nucleo.configuracao import obter_configuracoes
 
 configuracoes = obter_configuracoes()

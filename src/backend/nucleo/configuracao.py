@@ -3,7 +3,7 @@ from typing import Literal
 
 
 class Configuracoes(BaseSettings):
-    """Configurações da aplicação."""
+    """Configuraï¿½ï¿½es da aplicaï¿½ï¿½o."""
 
     # Ambiente
     ambiente: Literal["desenvolvimento", "producao"] = "desenvolvimento"
@@ -35,5 +35,5 @@ class Configuracoes(BaseSettings):
 
 
 def obter_configuracoes() -> Configuracoes:
-    """Retorna as configurações da aplicação."""
+    """Retorna as configuraï¿½ï¿½es da aplicaï¿½ï¿½o."""
     return Configuracoes()
