@@ -2,14 +2,11 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
 from uuid import uuid4
+
 from src.backend.bd.conexao import obter_sessao_bd
 from src.backend.modelos.usuario import UsuarioBD
-from src.backend.esquemas.autenticacao import (
-    CredenciaisLogin,
-    TokenResposta,
-    UsuarioLogin,
-)
 from src.backend.esquemas.usuario import UsuarioCriar, UsuarioResposta
+from src.backend.esquemas.autenticacao import CredenciaisLogin, TokenResposta
 from src.backend.nucleo.seguranca import (
     hash_senha,
     verificar_senha,
@@ -19,7 +16,11 @@ from src.backend.nucleo.seguranca import (
 roteador_autenticacao = APIRouter(prefix="/auth", tags=["autenticacao"])
 
 
-@roteador_autenticacao.post("/registrar", response_model=UsuarioResposta, status_code=status.HTTP_201_CREATED)
+@roteador_autenticacao.post(
+    "/registrar",
+    response_model=UsuarioResposta,
+    status_code=status.HTTP_201_CREATED
+)
 async def registrar(
     dados: UsuarioCriar,
     sessao: AsyncSession = Depends(obter_sessao_bd)
