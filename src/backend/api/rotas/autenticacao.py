@@ -64,7 +64,7 @@ async def login(
     )
     usuario = resultado.scalar_one_or_none()
 
-    if not usuario or not verificar_senha(credenciais.senha, usuario.senha_hash):
+    if not usuario or not verificar_senha(credenciais.senha, str(usuario.senha_hash)):
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Email ou senha incorretos"
