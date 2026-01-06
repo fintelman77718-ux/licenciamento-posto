@@ -1,6 +1,5 @@
 import pytest
 from httpx import AsyncClient
-from uuid import uuid4
 
 
 @pytest.mark.asyncio
@@ -15,7 +14,7 @@ async def test_criar_posto(cliente_teste: AsyncClient):
             "senha": "senha123",
         },
     )
-    
+
     login_response = await cliente_teste.post(
         "/auth/login",
         json={
@@ -23,9 +22,9 @@ async def test_criar_posto(cliente_teste: AsyncClient):
             "senha": "senha123",
         },
     )
-    
+
     token = login_response.json()["access_token"]
-    
+
     # Criar posto
     response = await cliente_teste.post(
         "/postos/",
@@ -45,7 +44,7 @@ async def test_criar_posto(cliente_teste: AsyncClient):
         },
         headers={"Authorization": f"Bearer {token}"},
     )
-    
+
     assert response.status_code == 201
     data = response.json()
     assert data["nome"] == "Posto Shell Centro"
@@ -64,7 +63,7 @@ async def test_listar_postos(cliente_teste: AsyncClient):
             "senha": "senha123",
         },
     )
-    
+
     login_response = await cliente_teste.post(
         "/auth/login",
         json={
@@ -72,15 +71,15 @@ async def test_listar_postos(cliente_teste: AsyncClient):
             "senha": "senha123",
         },
     )
-    
+
     token = login_response.json()["access_token"]
-    
+
     # Listar postos
     response = await cliente_teste.get(
         "/postos/",
         headers={"Authorization": f"Bearer {token}"},
     )
-    
+
     assert response.status_code == 200
     assert isinstance(response.json(), list)
 
@@ -89,5 +88,5 @@ async def test_listar_postos(cliente_teste: AsyncClient):
 async def test_acessar_sem_token(cliente_teste: AsyncClient):
     """Testa acesso a endpoint protegido sem token."""
     response = await cliente_teste.get("/postos/")
-    
+
     assert response.status_code == 403
