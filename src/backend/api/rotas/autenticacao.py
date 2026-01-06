@@ -31,13 +31,13 @@ async def registrar(
         select(UsuarioBD).where(UsuarioBD.email == dados.email)
     )
     usuario_existente = resultado.scalar_one_or_none()
-    
+
     if usuario_existente:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail="Email já registrado"
         )
-    
+
     novo_usuario = UsuarioBD(
         id=str(uuid4()),
         email=dados.email,
@@ -45,11 +45,11 @@ async def registrar(
         senha_hash=hash_senha(dados.senha),
         ativo=True,
     )
-    
+
     sessao.add(novo_usuario)
     await sessao.commit()
     await sessao.refresh(novo_usuario)
-    
+
     return novo_usuario
 
 
@@ -63,19 +63,19 @@ async def login(
         select(UsuarioBD).where(UsuarioBD.email == credenciais.email)
     )
     usuario = resultado.scalar_one_or_none()
-    
+
     if not usuario or not verificar_senha(credenciais.senha, usuario.senha_hash):
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Email ou senha incorretos"
         )
-    
+
     if not usuario.ativo:
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
             detail="Usuário inativo"
         )
-    
+
     token = criar_token_acesso(dados={"sub": usuario.id})
-    
+
     return {"access_token": token, "token_type": "bearer"}

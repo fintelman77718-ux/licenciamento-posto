@@ -15,7 +15,7 @@ async def obter_usuario_atual(
 ) -> UsuarioBD:
     """Obtém o usuário atual a partir do token JWT."""
     token = credenciais.credentials
-    
+
     payload = verificar_token(token)
     if not payload:
         raise HTTPException(
@@ -23,25 +23,25 @@ async def obter_usuario_atual(
             detail="Token inválido ou expirado",
             headers={"WWW-Authenticate": "Bearer"},
         )
-    
-    usuario_id: str = payload.get("sub")
+
+    usuario_id: str | None = payload.get("sub")
     if not usuario_id:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Token inválido",
             headers={"WWW-Authenticate": "Bearer"},
         )
-    
+
     resultado = await sessao.execute(
         select(UsuarioBD).where(UsuarioBD.id == usuario_id)
     )
     usuario = resultado.scalar_one_or_none()
-    
+
     if not usuario:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Usuário não encontrado",
             headers={"WWW-Authenticate": "Bearer"},
         )
-    
+
     return usuario

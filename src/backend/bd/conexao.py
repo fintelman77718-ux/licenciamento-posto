@@ -1,4 +1,4 @@
-from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
+from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, async_sessionmaker
 from sqlalchemy.orm import sessionmaker
 from src.backend.nucleo.configuracao import obter_configuracoes
 
@@ -17,8 +17,8 @@ engine = create_async_engine(
     future=True,
 )
 
-# Criar session factory
-SessionLocal = sessionmaker(
+# Criar session factory para async
+SessionLocal = async_sessionmaker(
     engine,
     class_=AsyncSession,
     expire_on_commit=False,
