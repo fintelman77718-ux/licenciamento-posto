@@ -1,0 +1,29 @@
+{
+  "data": "2026-01-06T20:48:41.585340",
+  "versao": "1.0",
+  "status": "estavel",
+  "arquivos": {
+    "total": 64,
+    "por_tipo": {
+      "sem_extensao": 10,
+      ".ini": 2,
+      ".md": 3,
+      ".yml": 2,
+      ".json": 2,
+      ".txt": 2,
+      ".py": 40,
+      ".TAG": 2,
+      ".mako": 1
+    }
+  },
+  "configuracoes": {
+    ".github/workflows/tests.yml": true,
+    "requirements.txt": true,
+    "pyproject.toml": false,
+    "pytest.ini": true,
+    ".gitignore": true,
+    "README.md": false,
+    "docs/API.md": true
+  },
+  "workflows": {}
+}
